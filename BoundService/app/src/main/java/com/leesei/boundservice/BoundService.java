@@ -15,7 +15,6 @@ import android.util.Log;
 public class BoundService extends Service {
     private final String TAG = "BoundService";
 
-    private final IBinder localBinder = new LocalBinder();
     private MessageHandler mMessageHandler;
     private Messenger mMessenger;
 
@@ -142,11 +141,5 @@ public class BoundService extends Service {
         Message msg = mMessageHandler.obtainMessage(MSG_CLIENT_UNBIND, 0, 0);
         mMessageHandler.sendMessage(msg);
         return false;
-    }
-
-    public class LocalBinder extends Binder {
-        BoundService getService() {
-            return BoundService.this;
-        }
     }
 }
